@@ -1,5 +1,6 @@
+cookingMain/node_modules/**/*
 node_modules/**/*
-.expo/*
+cookingMain/.expo/*
 npm-debug.*
 *.jks
 *.p8

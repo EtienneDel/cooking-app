@@ -1,24 +1,20 @@
-import React, {useState} from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import React, { useState } from "react";
+import { Button, StyleSheet, Text, View } from "react-native";
+import FoodList from "./food-list/food-list";
 
 export default function App() {
-    const [state, setState] = useState("")
-
   return (
     <View style={styles.container}>
-      <Text>{state}</Text>
-      <Button title="BONJOUR" onPress={() => setState("BONJOUR")}/>
-      <Button title="AUREVOIR" onPress={() => setState("BONSOIR")}/>
+      <FoodList />
     </View>
-
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
