@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { AlimentsModel, AlimentsType } from "../models/aliments-model";
 import { Button, Modal, StyleSheet, Text, TextInput, View } from "react-native";
-import Realm from "realm";
 
 interface props {
   foodList: AlimentsModel[];
@@ -14,13 +13,10 @@ export default function FoodListAddAlimentModal({
 }: props) {
   const [modalForm, setModalForm] = useState<AlimentsModel>({
     type: AlimentsType.FRUIT,
-    name: ""
+    name: "",
+    quantity: 0
   });
   const [isVisible, setIsVisible] = useState(isVisibleParent);
-
-  Realm.open({ schema: [] }).then(realm => {
-    realm.write(() => {});
-  });
 
   return (
     <Modal animationType="slide" visible={isVisible} transparent={true}>
@@ -35,7 +31,13 @@ export default function FoodListAddAlimentModal({
         <TextInput
           style={styles.textInput}
           defaultValue={modalForm.name}
-          onChangeText={e => setModalForm({ name: e, type: modalForm.type })}
+          onChangeText={e =>
+            setModalForm({
+              name: e,
+              type: modalForm.type,
+              quantity: modalForm.quantity
+            })
+          }
         />
         <Button
           title={"Validate"}

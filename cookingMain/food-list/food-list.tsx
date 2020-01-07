@@ -8,36 +8,23 @@ import {
   TextInput,
   View
 } from "react-native";
-import { AlimentsModel, AlimentsType } from "../models/aliments-model";
+import Aliments, {
+  AlimentsModel,
+  AlimentsType
+} from "../models/aliments-model";
 import { fruitsFake, vegetablesFake } from "../data-sets/aliments-dataset";
 import FoodListAddAlimentModal from "./food-list-add-aliment-modal";
+import withObservables from "@nozbe/with-observables";
 
-export default function FoodList() {
+export default function FoodList({ aliments }) {
   const [fruitList, setFruitList] = useState<AlimentsModel[]>(fruitsFake);
   const [showModal, setShowModal] = useState<boolean>(false);
 
   return (
     <View style={styles.container}>
-      <SectionList
-        sections={[
-          { title: AlimentsType.FRUIT, data: fruitList },
-          { title: AlimentsType.VEGETABLE, data: vegetablesFake }
-        ]}
-        renderItem={({ item }) => (
-          <Text
-            style={styles.aliments}
-            onPress={() =>
-              setFruitList(fruitList.filter(fruit => fruit.name !== item.name))
-            }
-          >
-            {item.name}
-          </Text>
-        )}
-        renderSectionHeader={({ section }) => (
-          <Text style={styles.sectionHeader}>{section.title}</Text>
-        )}
-        keyExtractor={(item, index) => item.name + Math.random()}
-      />
+      <Text>
+        {aliments.name} {aliments.type} {aliments.quantity}
+      </Text>
       <View style={styles.button}>
         <Button
           title={"Add aliment"}
@@ -52,6 +39,10 @@ export default function FoodList() {
     </View>
   );
 }
+
+const enhance = withObservables(["aliments"], ({ aliments }) => ({
+  aliments
+}));
 
 const styles = StyleSheet.create({
   container: {

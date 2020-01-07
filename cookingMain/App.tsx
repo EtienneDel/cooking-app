@@ -1,11 +1,24 @@
 import React, { useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import FoodList from "./food-list/food-list";
+import { fruitsFake, vegetablesFake } from "./data-sets/aliments-dataset";
+import { database } from "./db";
 
-export default function App() {
+export const alimentsCollection = database.collections.get("aliments");
+
+export default async function App() {
+  await database.action(async () => {
+    fruitsFake.map(async fruit => {
+      await alimentsCollection.create(() => fruit);
+    });
+    vegetablesFake.map(async vegetable => {
+      await alimentsCollection.create(() => vegetable);
+    });
+  });
+
   return (
     <View style={styles.container}>
-      <FoodList />
+      <FoodList aliments={database} />
     </View>
   );
 }

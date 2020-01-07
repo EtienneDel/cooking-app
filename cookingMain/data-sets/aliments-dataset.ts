@@ -1,15 +1,15 @@
 import { AlimentsModel, AlimentsType } from "../models/aliments-model";
 
 export const fruitsFake: AlimentsModel[] = [
-  { name: "Apple", type: AlimentsType.FRUIT },
-  { name: "Banana", type: AlimentsType.FRUIT },
-  { name: "Orange", type: AlimentsType.FRUIT },
-  { name: "Kiwi", type: AlimentsType.FRUIT },
-  { name: "Pear", type: AlimentsType.FRUIT }
+  { name: "Apple", type: AlimentsType.FRUIT, quantity: 0 },
+  { name: "Banana", type: AlimentsType.FRUIT, quantity: 0 },
+  { name: "Orange", type: AlimentsType.FRUIT, quantity: 0 },
+  { name: "Kiwi", type: AlimentsType.FRUIT, quantity: 0 },
+  { name: "Pear", type: AlimentsType.FRUIT, quantity: 0 }
 ];
 
 export const vegetablesFake: AlimentsModel[] = [
-  { name: "Cabbage", type: AlimentsType.VEGETABLE },
-  { name: "Eggplant", type: AlimentsType.VEGETABLE },
-  { name: "Tomato", type: AlimentsType.VEGETABLE }
+  { name: "Cabbage", type: AlimentsType.VEGETABLE, quantity: 0 },
+  { name: "Eggplant", type: AlimentsType.VEGETABLE, quantity: 0 },
+  { name: "Tomato", type: AlimentsType.VEGETABLE, quantity: 0 }
 ];
