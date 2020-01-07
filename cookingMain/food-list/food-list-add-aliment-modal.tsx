@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AlimentsModel, AlimentsType } from "../models/aliments-model";
 import { Button, Modal, StyleSheet, Text, TextInput, View } from "react-native";
+import Realm from "realm";
 
 interface props {
   foodList: AlimentsModel[];
@@ -16,6 +17,10 @@ export default function FoodListAddAlimentModal({
     name: ""
   });
   const [isVisible, setIsVisible] = useState(isVisibleParent);
+
+  Realm.open({ schema: [] }).then(realm => {
+    realm.write(() => {});
+  });
 
   return (
     <Modal animationType="slide" visible={isVisible} transparent={true}>
